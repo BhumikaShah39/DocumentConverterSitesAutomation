@@ -10,6 +10,7 @@ public class IlovePdfUploadPage extends BasePage {
     }
 
     // Navigate to PDF to Word
+
     public void goToPdfToWord() {
         click(IlovePdfLocators.PDF_TO_WORD_LINK);
     }

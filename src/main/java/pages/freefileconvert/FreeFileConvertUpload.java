@@ -33,19 +33,23 @@ public class FreeFileConvertUpload extends BasePage {
         sendKeys(FreeFileConvertLocators.FILE_INPUT, filePath);
     }
 
-//select type and convert
-    public void conversion(String fileType){
-        WebElement el = waitVisible(FreeFileConvertLocators.FORMAT_DROPDOWN);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", el);
+    //select type and convert
+    public void conversion(String fileType) {
 
-        waitVisible(FreeFileConvertLocators.SEARCH);
-        sendKeys(FreeFileConvertLocators.SEARCH, fileType);
+        WebElement formatDropdown = waitClickable(FreeFileConvertLocators.FORMAT_DROPDOWN);
+        ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].scrollIntoView({block:'center'});", formatDropdown);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", formatDropdown);
 
-        waitVisible(FreeFileConvertLocators.SELECT_DOCX);
+        WebElement search = waitVisible(FreeFileConvertLocators.SEARCH);
+        search.clear();
+        search.sendKeys(fileType);
+
         click(FreeFileConvertLocators.SELECT_DOCX);
 
-        waitClickable(FreeFileConvertLocators.CONVERT_BUTTON);
-        click(FreeFileConvertLocators.CONVERT_BUTTON);
+        WebElement convertBtn = waitClickable(FreeFileConvertLocators.CONVERT_BUTTON);
+        ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].scrollIntoView({block:'center'});", convertBtn);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", convertBtn);
     }
-
 }
