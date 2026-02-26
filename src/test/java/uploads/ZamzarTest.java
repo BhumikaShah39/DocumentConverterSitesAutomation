@@ -42,6 +42,11 @@ public class ZamzarTest {
         zamzarPage.convert();
     }
 
+    @Test(priority = 4, dependsOnMethods = {"convert"})
+    public void download(){
+        zamzarPage.download();
+    }
+
 
 
 

@@ -14,16 +14,11 @@ public class ZamzarUploadPage extends BasePage {
     }
 
     public void uploadFile(String filePath){
+
         WebElement fileInput = driver.findElement(ZamzarLocators.CHOOSE_FILE);
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript(
-                "arguments[0].style.display='block'; arguments[0].style.visibility='visible';",
-                fileInput
-        );
-
-
         fileInput.sendKeys(filePath);
         System.out.println("File value: " + fileInput.getAttribute("value"));
+        waitVisibleOnScreen(ZamzarLocators.UPLOAD_VALIDATION);
 
     }
 
@@ -36,6 +31,11 @@ public class ZamzarUploadPage extends BasePage {
     public void convert(){
         waitClickable(ZamzarLocators.CONVERT);
         click(ZamzarLocators.CONVERT);
+    }
+
+    public void download(){
+        waitVisible(ZamzarLocators.DOWNLOAD_BUTTON);
+        click(ZamzarLocators.DOWNLOAD_BUTTON);
     }
 }
 
