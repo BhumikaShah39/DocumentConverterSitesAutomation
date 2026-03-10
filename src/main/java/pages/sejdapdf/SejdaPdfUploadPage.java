@@ -1,7 +1,6 @@
 package pages.sejdapdf;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import pages.base.BasePage;
 
 public class SejdaPdfUploadPage extends BasePage {
